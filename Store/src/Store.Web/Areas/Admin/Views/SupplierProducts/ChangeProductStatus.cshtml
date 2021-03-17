@@ -1,0 +1,19 @@
+﻿@{
+    var isAdded = (bool)ViewData["IsAdded"];
+    var code = (string)ViewData["Code"];
+    var price = (double)ViewData["Price"];
+}
+@if (!isAdded)
+{
+    <span class="label label-success custom-center custom-green pointer"
+          onclick='AddItem("@code", @price)'>
+        Add
+    </span>
+}
+else
+{
+    <span class="label label-danger custom-center custom-red pointer"
+          onclick='RemoveItem("@code")'>
+        Remove
+    </span>
+}

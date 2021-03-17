@@ -5,6 +5,9 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Store.Core.ValueObject;
+using Newtonsoft.Json;
 
 namespace Store.Infrastructure
 {
@@ -13,21 +16,23 @@ namespace Store.Infrastructure
         private readonly ILogger<SupplierService> _logger;
 
         HttpClientHandler _clientHandler = new HttpClientHandler();
+        IConfiguration Configuration;
 
-        public SupplierService(ILogger<SupplierService> logger)
+        public SupplierService(ILogger<SupplierService> logger, IConfiguration _configuration)
         {
             _logger = logger;
             _clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            Configuration = _configuration;
         }
 
-        public async Task<string> GetItemsAsync()
+        public async Task<List<SupplierProductValueObject>> GetItemsAsync()
         {
             using (var httpClient = new HttpClient(_clientHandler))
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44358/api/products/"))
+                using (var response = await httpClient.GetAsync(Configuration.GetSection("SupplierProducts").Value))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    return apiResponse;
+                    return JsonConvert.DeserializeObject<List<SupplierProductValueObject>>(apiResponse);
                 }
             }
             throw new NotImplementedException();
@@ -35,26 +40,28 @@ namespace Store.Infrastructure
 
 
 
-        public async Task<string> GetItemByCodeAsync(string code)
+        public async Task<SupplierProductValueObject> GetItemByCodeAsync(string code)
         {
             using (var httpClient = new HttpClient(_clientHandler))
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44358/api/products/code/" + code))
+                using (var response = await httpClient.GetAsync(Configuration.GetSection("SupplierProduct").Value + code))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    return apiResponse;
+                    return JsonConvert.DeserializeObject<SupplierProductValueObject>(apiResponse);
+
                 }
             }
             throw new NotImplementedException();
         }
-        public async Task<string> GetCategoriesAsync()
+        public async Task<List<SupplierCategoryValueObject>> GetCategoriesAsync()
         {
             using (var httpClient = new HttpClient(_clientHandler))
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44358/api/categories/"))
+                using (var response = await httpClient.GetAsync(Configuration.GetSection("SupplierCategories").Value))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    return apiResponse;
+                    return JsonConvert.DeserializeObject<List<SupplierCategoryValueObject>>(apiResponse);
+                    
                 }
             }
             throw new NotImplementedException();

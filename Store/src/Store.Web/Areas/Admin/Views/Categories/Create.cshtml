@@ -1,0 +1,67 @@
+﻿@model Store.Core.Entities.Category
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0 flex-display">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Categories",new {Area="admin"})">Categories</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Create","Categories",new {Area="admin"})">Create</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<form asp-action="Create" id="main-form">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">New Category Info</h4>
+                        <div class="form-valide">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group row">
+                                <label asp-for="Name" class="col-lg-4 col-form-label"></label>
+                                <div class="col-lg-6">
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Description" class="col-lg-4 col-form-label"></label>
+                                <div class="col-lg-6">
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- row -->
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Everything is ready? Create the category</h4>
+                        <div class="col-lg-8 ml-auto">
+                            <input type="submit" value="Create" class="btn btn-primary" id="submitCreate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

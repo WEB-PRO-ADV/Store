@@ -1,0 +1,208 @@
+﻿@model IEnumerable<Store.Core.ValueObject.SupplierProductValueObject>
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string SupplierImagesURL = Configuration.GetSection("SupplierImages").Value;
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0 flex-display">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index","SupplierProducts",new {Area="admin"})">Products</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Products</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="custom-center">
+                                            #
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Code)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Price)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.ImgUrl)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Factory)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Category)
+                                        </span>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int cnt = 1; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span class="custom-center">
+                                                @cnt
+                                            </span>
+                                            @{ cnt++; }
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Code)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                <img src="@SupplierImagesURL/@item.ImgUrl" alt="@Html.DisplayFor(modelItem => item.Name)" width="20" height="20" class="img-fluid thumbnail m-r-15">
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Factory)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="custom-center">
+                                                @Html.DisplayFor(modelItem => item.Category)
+                                            </span>
+                                        </td>
+                                        <td id="add-remove">
+                                            @if (!item.IsAdded)
+                                            {
+                                                <span class="label label-success custom-center custom-green pointer"
+                                                      onclick='AddItem("@Html.DisplayFor(modelItem => item.Code)", @Html.DisplayFor(modelItem => item.Price))'>
+                                                    Add
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-danger custom-center custom-red pointer"
+                                                      onclick='RemoveItem("@Html.DisplayFor(modelItem => item.Code)")'>
+                                                    Remove
+                                                </span>
+                                            }
+                                            @*<span class="custom-center" onclick='sweetAjax("@Html.DisplayFor(modelItem => item.Code)", @Html.DisplayFor(modelItem => item.Price))'>
+                                                @if ()
+                                                {
+                                                    <i class="ti-plus circle-icon custom-green"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa-minus circle-icon custom-red"></i>
+                                                }
+                                            </span>*@
+                                            @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        <span class="custom-center">
+                                            #
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Code)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Price)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.ImgUrl)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Factory)
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span class="custom-center">
+                                            @Html.DisplayNameFor(model => model.Category)
+                                        </span>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #/ container -->
+<script src="~/plugins/common/common.min.js"></script>
+<script src="~/js/custom.min.js"></script>
+<script src="~/js/settings.js"></script>
+<script src="~/js/gleek.js"></script>
+<script src="~/js/styleSwitcher.js"></script>
+
+
+<script src="~/plugins/sweetalert/js/sweetalert.min.js"></script>
+<script src="~/plugins/sweetalert/js/custom-ajax-alert.js"></script>

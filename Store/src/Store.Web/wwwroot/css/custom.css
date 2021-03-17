@@ -9,3 +9,60 @@ body {
     max-width: 100vw;
     overflow-x: hidden;
 }
+
+.header-bot {
+    padding: 10px 0;
+}
+
+@media (min-width: 1200px) {
+    .header-bot .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.logo_agile {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0;
+    padding-left: 5%;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.header-info-item {
+    margin: 0 5px;
+}
+
+.header .row {
+    display: flex;
+    justify-content: center;
+}
+
+.log-in {
+    background: #808080;
+    border-color: #808080;
+}
+
+.log-in:hover {
+    background: #373535;
+}
+
+.sign-up:hover {
+    background: #ff0000;
+}
+
+.cart-icon {
+    color: #fff;
+    background: #dc3545;
+}
+
+.cart-icon:hover {
+    background: #ff0000 !important;
+}
+

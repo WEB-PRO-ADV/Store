@@ -13,6 +13,10 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 using System.Linq;
 using Store.Core.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Store.Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Store.Core.Entities;
 
 namespace Store.Web
 {
@@ -38,10 +42,14 @@ namespace Store.Web
 
             string connectionString = Configuration.GetConnectionString("StoreDbContextConnection");  //Configuration.GetConnectionString("DefaultConnection");
 
-
             // new code
             //services.AddTransient<ISupplierService, SupplierService>();
 
+            services.AddIdentity<StoreUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            //services.AddControllersWithViews();
             // end new code
 
 
@@ -84,6 +92,15 @@ namespace Store.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            // new code
+            app.UseStaticFiles();
+            app.UseAuthentication();
+
+
+            // end new code
+
+
             app.UseRouting();
 
             app.UseHttpsRedirection();
@@ -98,9 +115,19 @@ namespace Store.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                 name: "Admin",
+                 areaName: "Admin",
+                 pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
+
+
         }
     }
 }

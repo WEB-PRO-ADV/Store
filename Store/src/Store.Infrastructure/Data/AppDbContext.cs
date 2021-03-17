@@ -8,10 +8,11 @@ using Store.SharedKernel;
 using Ardalis.EFCore.Extensions;
 using System.Reflection;
 using JetBrains.Annotations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Store.Infrastructure.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<StoreUser>
     {
         private readonly IDomainEventDispatcher _dispatcher;
 

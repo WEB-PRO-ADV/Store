@@ -1,0 +1,134 @@
+﻿.centered-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#category-spec-container {
+    display: none;
+}
+
+.new-item {
+    -webkit-animation: fadeInFromNone 1s ease-out;
+    -moz-animation: fadeInFromNone 1s ease-out;
+    -o-animation: fadeInFromNone 1s ease-out;
+    animation: fadeInFromNone 1s ease-out;
+}
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.remove-icon:hover {
+    cursor: pointer;
+}
+
+.nav-text {
+    padding-left: 5px;
+}
+
+.flex-display {
+    display: flex;
+}
+
+.accordion-padding {
+    padding: 10px;
+}
+
+.visible {
+    display: block;
+}
+
+
+.circle-icon {
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.custom-green {
+    color: #fff;
+    background: #00ff21;
+}
+
+.custom-center {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-red {
+    color: #fff;
+    background: red;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#DataTables_Table_0_filter input {
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.brand-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 30px;
+    font-weight: bold;
+}
+
