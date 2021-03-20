@@ -12,7 +12,7 @@ namespace Store.Core.Entities
         [DataType(DataType.Text)]
         [Display(Name = "Quantity")]
         public int Quantity { set; get; }
-        public int ItemId { get; set; }
+        public String ItemName { get; set; }
         public int OrderId { get; set; }
         public Order Order { set; get; }
     }
