@@ -51,7 +51,7 @@ function RemoveItem(code) {
     swal(
         {
             title: "Are you sure to delete ?",
-            text: "You will not be able to recover this imaginary file !!",
+            text: "This item and all offers that contain it will be removed!!",
             type: "warning",
             showCancelButton: !0,
             confirmButtonColor: "#DD6B55",
@@ -98,4 +98,97 @@ function RemoveItem(code) {
             }
         }
       );
+}
+
+
+function deleteItem(id) {
+    swal(
+        {
+            title: "Are you sure to delete ?",
+            text: "This item and all offers that contain it will be removed!!",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it !!",
+            cancelButtonText: "No, cancel it !!",
+            closeOnConfirm: !1,
+            closeOnCancel: !1,
+        },
+        function (e) {
+            if (e) {
+                $.ajax({
+                    url: "/admin/Items/Delete",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (data) {
+                        swal(
+                            "Removed !!",
+                            "You removed the item from the store successfully !!",
+                            "success"
+                        );
+                        $("#table-row-" + id).remove();
+                        return 1;
+                    },
+                    error: function () {
+                        swal(
+                            "Error",
+                            "Something went wrong, try again later!",
+                            "error"
+                        );
+                        return 0;
+                    },
+                });
+            }
+            else {
+                swal("Cancelled !!", "You cancelled removing the item successfully !!", "error");
+                return 0;
+            }
+        }
+    );
+}
+
+function deleteOffer(id) {
+    swal(
+        {
+            title: "Are you sure to delete ?",
+            text: "This Offer will be removed!!",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it !!",
+            cancelButtonText: "No, cancel it !!",
+            closeOnConfirm: !1,
+            closeOnCancel: !1,
+        },
+        function (e) {
+            if (e) {
+                $.ajax({
+                    url: "/admin/Offers/Delete",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (data) {
+                        swal(
+                            "Removed !!",
+                            "You removed the offer from the store successfully !!",
+                            "success"
+                        );
+                        $("#table-row-" + id).remove();
+                        return 1;
+                    },
+                    error: function () {
+                        swal(
+                            "Error",
+                            "Something went wrong, try again later!",
+                            "error"
+                        );
+                        return 0;
+                    },
+                });
+            }
+            else {
+                swal("Cancelled !!", "You cancelled removing the offer successfully !!", "error");
+                return 0;
+            }
+        }
+    );
 }

@@ -1,4 +1,10 @@
-﻿.centered-container {
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.centered-container {
     height: 100%;
     display: flex;
     align-items: center;
@@ -132,3 +138,78 @@
     font-weight: bold;
 }
 
+.admin-control {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-control-icon {
+    height: 24px;
+    width: 34px;
+    padding: 0 5px;
+}
+
+.admin-control-icon img {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+/*create offer dropdown list styles*/
+.dropbtn {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #f2f2f2;
+    }
+
+#items-search {
+    font-size: 16px;
+    width: 100%;
+    padding: 14px 10px 12px 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+    #items-search:focus {
+        outline: 3px solid #ddd;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    width: calc(100% - 30px);
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+    height: 200px;
+}
+
+    .dropdown-content span {
+        cursor: pointer;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown span:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.item-row {
+    cursor: pointer;
+}

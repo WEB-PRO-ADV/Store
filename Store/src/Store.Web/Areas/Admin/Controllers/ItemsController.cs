@@ -18,7 +18,7 @@ namespace Store.Web.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var items = _context.Items.ToList();
+            var items = _context.Items.Where(i => i.IsOffer == false).ToList();
             return View(items);
         }
 
@@ -27,6 +27,23 @@ namespace Store.Web.Areas.Admin.Controllers
             var item = _context.Items.Where(i => i.Id == id).FirstOrDefault();
 
             return View(item);
+        }
+
+        [HttpPost]
+        public async Task<int> Delete(int id)
+        {
+            // to be edited -> remove offers
+            var item = _context.Items.Where(i => i.Id == id).FirstOrDefault();
+            if(item != null)
+            {
+                _context.Items.Remove(item);
+                await _context.SaveChangesAsync();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

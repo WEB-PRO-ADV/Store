@@ -60,6 +60,19 @@ namespace Store.Web.Areas.Admin.Controllers
 
                 _context.Add(item);
                 await _context.SaveChangesAsync();
+
+                int id = item.Id;
+                
+                foreach(var spec in product.Specifications)
+                {
+                    var itemSpec = new ItemUniqueSpec();
+                    itemSpec.ItemId = id;
+                    itemSpec.Name = spec.Name;
+                    itemSpec.Value = spec.Value;
+                    _context.Add(itemSpec);
+                }
+                await _context.SaveChangesAsync();
+
                 return true;
             }
             catch (Exception ex)

@@ -1,0 +1,73 @@
+﻿@model Store.Core.ValueObject.ItemValueObject
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string SupplierImagesURL = Configuration.GetSection("SupplierImages").Value;
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/css/fontawesome-all.css">
+    <!-- Font-Awesome-Icons-CSS -->
+    <link href="~/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- pop-up-box -->
+    <link href="~/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- menu style -->
+    <!-- //Custom-Files -->
+}
+
+<!-- Single Page -->
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>P</span>roduct
+            <span>#</span>@Model.Item.Code
+        </h3>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="@SupplierImagesURL/@Model.Item.Image">
+                                <div class="thumb-image">
+                                    <img src="@SupplierImagesURL/@Model.Item.Image" data-imagezoom="true" class="img-fluid" alt="@Model.Item.Name">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                <h3 class="mb-3">@Model.Item.Name</h3>
+                <p class="mb-3">
+                    <span class="item_price label label-price">$@Model.Item.Price</span>
+                </p>
+                <div class="product-single-w3l">
+                    <ul class="label-specs">
+                        @foreach (var spec in Model.ItemUniqueSpec)
+                        {
+                        <li class="mb-1 item-specs">
+                            <span class="spec-name">
+                                @spec.Name:
+                            </span>
+                            <span>
+                                @spec.Value
+                            </span>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="occasion-cart">
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <span class="btn btn-default label-add-to-cart">Add to cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

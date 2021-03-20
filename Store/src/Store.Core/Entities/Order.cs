@@ -18,6 +18,6 @@ namespace Store.Core.Entities
         public string Status { set; get; }
         public int CustomerId { set; get; }
         public Customer Customer { set; get; }
-        public ICollection<OrderedItems> OrderedItems { set; get; }
+        public ICollection<OrderedItem> OrderedItems { set; get; }
     }
 }

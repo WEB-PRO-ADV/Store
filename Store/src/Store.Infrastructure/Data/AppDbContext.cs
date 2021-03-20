@@ -32,9 +32,9 @@ namespace Store.Infrastructure.Data
         public DbSet<Item> Items { set; get; }
         public DbSet<ItemCart> ItemCarts { set; get; }
         public DbSet<ItemUniqueSpec> ItemUniqueSpecs { set; get; }
-        public DbSet<OfferItems> OfferItems { set; get; }
+        public DbSet<OfferItem> OfferItems { set; get; }
         public DbSet<Order> Orders { set; get; }
-        public DbSet<OrderedItems> OrderedItems { set; get; }
+        public DbSet<OrderedItem> OrderedItems { set; get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

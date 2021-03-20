@@ -6,14 +6,15 @@ using System.Text;
 
 namespace Store.Core.Entities
 {
-    public class OrderedItems : BaseEntity
+    public class OfferItem : BaseEntity
     {
-        [Required(ErrorMessage = "Quantity are required.")]
+        public int ItemId { set; get; }
+        public int ContainedItemId { get; set; }
+        [Required(ErrorMessage = "Quantity is required.")]
         [DataType(DataType.Text)]
         [Display(Name = "Quantity")]
         public int Quantity { set; get; }
-        public int ItemId { get; set; }
-        public int OrderId { get; set; }
-        public Order Order { set; get; }
+        public Item Item { set; get; }
+        public Item ContainedItem { set; get; }
     }
 }

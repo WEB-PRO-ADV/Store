@@ -7,11 +7,10 @@
     string SupplierImagesURL = Configuration.GetSection("SupplierImages").Value;
 }
 
-
 <div class="row page-titles mx-0">
     <div class="col p-md-0 flex-display">
         <ol class="breadcrumb">
-            <li><a href="@Url.Action("Index","Items",new {Area="admin"})">Items</a></li>
+            <li><a href="@Url.Action("Index","Offers",new {Area="admin"})">Offers</a></li>
         </ol>
     </div>
 </div>
@@ -57,11 +56,6 @@
                                     </th>
                                     <th>
                                         <span class="custom-center">
-                                            @Html.DisplayNameFor(model => model.Factory)
-                                        </span>
-                                    </th>
-                                    <th>
-                                        <span class="custom-center">
                                             @Html.DisplayNameFor(model => model.Category)
                                         </span>
                                     </th>
@@ -96,7 +90,7 @@
                                         </td>
                                         <td>
                                             <span class="custom-center">
-                                                <img src="@SupplierImagesURL/@item.Image" alt="@Html.DisplayFor(modelItem => item.Name)" width="20" height="20" class="img-fluid thumbnail m-r-15">
+                                                <img src="~/images/@item.Image" alt="@Html.DisplayFor(modelItem => item.Name)" width="20" height="20" class="img-fluid thumbnail m-r-15">
                                             </span>
                                         </td>
                                         <td>
@@ -106,22 +100,14 @@
                                         </td>
                                         <td>
                                             <span class="custom-center">
-                                                @Html.DisplayFor(modelItem => item.Factory)
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="custom-center">
                                                 @Html.DisplayFor(modelItem => item.Category)
                                             </span>
                                         </td>
                                         <td class="admin-control">
-                                            <span class="admin-control-icon" onclick='removeItem(@Html.DisplayFor(modelItem => item.Id))'>
+                                            <span class="admin-control-icon" onclick='removeOffer(@Html.DisplayFor(modelItem => item.Id))'>
                                                 <img src="https://img.icons8.com/nolan/64/information.png" />
                                             </span>
-                                            <span class="admin-control-icon" onclick='removeItem(@Html.DisplayFor(modelItem => item.Id))'>
-                                                <img src="https://img.icons8.com/nolan/64/edit.png" />
-                                            </span>
-                                            <span class="admin-control-icon" onclick='deleteItem(@Html.DisplayFor(modelItem => item.Id))'>
+                                            <span class="admin-control-icon" onclick='deleteOffer(@Html.DisplayFor(modelItem => item.Id))'>
                                                 <img src="https://img.icons8.com/dusk/64/000000/filled-trash.png" />
                                             </span>
                                         </td>
@@ -158,11 +144,6 @@
                                     <th>
                                         <span class="custom-center">
                                             @Html.DisplayNameFor(model => model.Description)
-                                        </span>
-                                    </th>
-                                    <th>
-                                        <span class="custom-center">
-                                            @Html.DisplayNameFor(model => model.Factory)
                                         </span>
                                     </th>
                                     <th>

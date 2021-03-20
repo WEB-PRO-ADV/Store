@@ -1,0 +1,16 @@
+﻿@model Store.Core.Entities.Item
+<tr id="item-row-@Model.Id">
+    <td>
+        <input asp-for="@Model.Id" type="hidden" />
+        @Model.Name
+    </td>
+    <td>
+        @Model.Price
+    </td>
+    <td>
+        <input class="form-control" name="Quantity" value="1" />
+    </td>
+    <td>
+        <span onclick="removeItemRow(@Model.Id)" class="item-row"><i class="fa fa-close color-danger"></i></span>
+    </td>
+</tr>
