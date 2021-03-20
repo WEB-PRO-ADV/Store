@@ -86,7 +86,7 @@ body {
 }
 
 .flex-control-thumbs > li {
-    width: 15% !important;
+    width: 20% !important;
 }
 
 .tittle-w3l span {
@@ -113,7 +113,7 @@ body {
     color: #F45C5D;
 }
 
-.label-specs {
+.label-specs, li {
     list-style: none !important;
 }
 
@@ -123,6 +123,29 @@ body {
 }
 
 .label-add-to-cart {
+    margin-top: 10px;
     background: #808080 !important;
     color: white;
+}
+
+.original-price {
+    line-height: 15px;
+    font-weight: 600;
+    font-size: 85%;
+}
+
+
+.offer-item-link > a {
+    color: #000 !important;
+}
+
+    .offer-item-link:hover {
+        background: #f8f3f3 !important;
+    }
+
+.product-single-w3l {
+    border-top: 1px solid #dee2e6 !important;
+}
+.tab-content {
+    border-bottom: 1px solid #dee2e6 !important;
 }

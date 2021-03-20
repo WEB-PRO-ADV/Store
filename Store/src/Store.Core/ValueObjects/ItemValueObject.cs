@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Store.Core.ValueObject
+namespace Store.Core.ValueObjects
 {
     public class ItemValueObject
     {

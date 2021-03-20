@@ -1,4 +1,4 @@
-﻿@model Store.Core.ValueObject.ItemValueObject
+﻿@model Store.Core.ValueObjects.ItemValueObject
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @{
@@ -21,10 +21,10 @@
 <div class="banner-bootom-w3-agileits py-5">
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        @*<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
             <span>P</span>roduct
             <span>#</span>@Model.Item.Code
-        </h3>
+        </h3>*@
         <!-- //tittle heading -->
         <div class="row">
             <div class="col-lg-5 col-md-8 single-right-left ">

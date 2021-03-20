@@ -1,0 +1,117 @@
+﻿@model Store.Core.ValueObjects.OfferValueObject
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Offer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string SupplierImagesURL = Configuration.GetSection("SupplierImages").Value;
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/css/fontawesome-all.css">
+    <!-- Font-Awesome-Icons-CSS -->
+    <link href="~/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- pop-up-box -->
+    <link href="~/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- menu style -->
+    <!-- //Custom-Files -->
+}
+
+<!-- Single Page -->
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            @foreach (var offerItem in Model.OfferItems)
+                            {
+                                <li data-thumb="@SupplierImagesURL/@offerItem.Item.Image">
+                                    <div class="thumb-image">
+                                        <img src="@SupplierImagesURL/@offerItem.Item.Image" data-imagezoom="true" class="img-fluid" alt="@offerItem.Item.Name">
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                <h3 class="mb-3">@Model.Item.Name</h3>
+                <p class="mb-3">
+                    <span class="item_price label label-price">$@Model.Item.Price</span>
+                    @{
+                        double totalPrice = 0;
+                        foreach (var offerItem in Model.OfferItems)
+                        {
+                            totalPrice += offerItem.Item.Price;
+                        }
+                        <del class="original-price">@totalPrice</del>
+                    }
+                </p>
+                <div class="product-single-w3l">
+                    <div>
+                        <!-- Nav tabs -->
+                        <div class="default-tab">
+                            <ul class="nav nav-tabs mb-3 label-specs" role="tablist">
+                                @{ int offerItemsCtr = 0; }
+                                @foreach (var offerItem in Model.OfferItems)
+                                {
+                                    offerItemsCtr++;
+                                    string classes = "active";
+                                    if (offerItemsCtr > 1)
+                                    {
+                                        classes = "";
+                                    }
+                                    <li class="nav-item offer-item-link">
+                                        <a class="nav-link @classes" data-toggle="tab" href="#offer-item-@offerItemsCtr">@offerItem.Item.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                            @{ offerItemsCtr = 0; }
+                            <div class="tab-content">
+                                @foreach (var offerItem in Model.OfferItems)
+                                {
+                                    offerItemsCtr++;
+                                    string role = "role=\"tabpanel\"";
+                                    string classes = "tab-pane fade show active";
+                                    if (offerItemsCtr > 1)
+                                    {
+                                        role = "";
+                                        classes = "tab-pane fade";
+                                    }
+
+                                    <div class="@classes" id="offer-item-@offerItemsCtr" @role>
+                                        @foreach (var spec in offerItem.ItemUniqueSpec)
+                                        {
+                                            <div class="p-t-15 item-specs">
+                                                <span class="spec-name">
+                                                    @spec.Name:
+                                                </span>
+                                                <span>
+                                                    @spec.Value
+                                                </span>
+                                            </div>
+                                        }
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="occasion-cart">
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <span class="btn btn-default label-add-to-cart">Add to cart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/plugins/common/common.min.js"></script>
+    <script src="~/js/custom.min.js"></script>
+    <script src="~/js/settings.js"></script>
+    <script src="~/js/gleek.js"></script>
+    <script src="~/js/styleSwitcher.js"></script>
