@@ -39,6 +39,19 @@
 </head>
 
 <body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
     <!-- header-bottom-->
     <div class="header-bot">
         <div class="container">
@@ -77,8 +90,8 @@
                         </div>
                     </div>
                     <!-- //cart details -->
-                    <a href="#" class="btn btn-danger header-info-item log-in">Log in</a>
-                    <a href="#" class="btn btn-danger header-info-item sign-up">Sign up</a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-danger header-info-item log-in">Login</a>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-danger header-info-item sign-up">Sign up</a>
                 </div>
             </div>
         </div>

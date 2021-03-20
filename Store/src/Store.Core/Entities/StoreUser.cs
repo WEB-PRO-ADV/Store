@@ -7,5 +7,6 @@ namespace Store.Core.Entities
 {
     public class StoreUser : IdentityUser
     {
+        public ICollection<Order> Orders { set; get; }
     }
 }

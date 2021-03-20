@@ -11,9 +11,8 @@ namespace Store.Core.Entities
         [Required(ErrorMessage = "Date is required.")]
         [DataType(DataType.Date)]
         [Display(Name = "Cart Date")]
-        public DateTime Date { set; get; }
-        public int CustomerId { set; get; }
-        public Customer Customer { set; get; }
+        public int StoreUserId { set; get; }
+        public StoreUser StoreUser { set; get; }
         public ICollection<ItemCart> ItemCarts { set; get; }
     }
 }

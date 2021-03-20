@@ -149,3 +149,24 @@ body {
 .tab-content {
     border-bottom: 1px solid #dee2e6 !important;
 }
+
+.main-body {
+    padding: 10px 0;
+}
+
+.login-form {
+    border: none;
+}
+
+.login-input {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.login-form__footer {
+    margin-top: 0 !important;
+}
+
+.login-form-bg {
+    margin-top: 50px;
+}

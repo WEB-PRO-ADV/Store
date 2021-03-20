@@ -22,9 +22,9 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         @*<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-            <span>P</span>roduct
-            <span>#</span>@Model.Item.Code
-        </h3>*@
+                <span>P</span>roduct
+                <span>#</span>@Model.Item.Code
+            </h3>*@
         <!-- //tittle heading -->
         <div class="row">
             <div class="col-lg-5 col-md-8 single-right-left ">
@@ -51,14 +51,14 @@
                     <ul class="label-specs">
                         @foreach (var spec in Model.ItemUniqueSpec)
                         {
-                        <li class="mb-1 item-specs">
-                            <span class="spec-name">
-                                @spec.Name:
-                            </span>
-                            <span>
-                                @spec.Value
-                            </span>
-                        </li>
+                            <li class="mb-1 item-specs">
+                                <span class="spec-name">
+                                    @spec.Name:
+                                </span>
+                                <span>
+                                    @spec.Value
+                                </span>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -71,3 +71,9 @@
         </div>
     </div>
 </div>
+
+<script src="~/plugins/common/common.min.js"></script>
+<script src="~/js/custom.min.js"></script>
+<script src="~/js/settings.js"></script>
+<script src="~/js/gleek.js"></script>
+<script src="~/js/styleSwitcher.js"></script>

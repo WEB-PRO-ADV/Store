@@ -1,5 +1,148 @@
-﻿@{
+﻿@model Store.Core.ValueObjects.FilterSpecValueObject
+@{
     ViewData["Title"] = "Clean DDD Architecture Sample";
 }
 
-HI
+
+<!-- product right -->
+<div class="col-lg-3 mt-lg-0 mt-4 p-lg-0">
+    <div class="side-bar p-sm-4 p-3">
+        <div class="search-hotel border-bottom py-2">
+            <h3 class="agileits-sear-head mb-3">Search Here..</h3>
+            <form action="#" method="post">
+                <input type="search" placeholder="Product name..." name="search" required="">
+                <input type="submit" value=" ">
+            </form>
+        </div>
+        <!-- price -->
+        <div class="range border-bottom py-2">
+            <h3 class="agileits-sear-head mb-3"> @Html.DisplayNameFor(model => model.Item.Price)</h3>
+            <div class="w3l-range">
+                <ul>
+
+                    <li>
+                        <p>$0 - $ @Html.DisplayFor(modelItem => modelItem.Price_max)</p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- //price -->
+        <!-- discounts -->
+
+        <div class="left-side border-bottom py-2">
+            <h3 class="agileits-sear-head mb-3">Items</h3>
+            <ul>
+                @foreach (var item in Model.Items)
+                {
+
+                    <li>
+                        <input type="checkbox" class="checked" id=" myCheck" onclick="myFunction()">
+                        <span class="span">@Html.DisplayFor(modelItem => item.Name)</span>
+                    </li>
+                    if (Model.Namespecefication != null)
+                    {
+                        foreach (var item1 in Model.ItemUniqueSpecs)
+                        {
+                            if (item.Id == item1.ItemId && item1.Name == Model.Namespecefication)
+                            {
+                                <li class="my-1">
+                                    <p id=" text">@Html.DisplayFor(modelItem => item1.Value)</p>
+                                </li>
+
+                            }
+                        }
+                    }
+                }
+
+            </ul>
+        </div>
+        <!-- //discounts -->
+        <!-- discounts -->
+
+        <div class="left-side border-bottom py-2" id="navbarSupportedContent">
+
+            <h3 class="agileits-sear-head mb-3">ItemUniqueSpec</h3>
+            <ul>
+                @foreach (var item in Model.NameSpec)
+                {
+
+                    <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+
+                        @using (Html.BeginForm("Index", "Home", new { name = item }, FormMethod.Post))
+                        {
+                            <input type="submit" value=" @Html.DisplayFor(modelItem => item)" class="nav-link dropdown-toggle" />
+                        }
+                    </li>
+                    <p></p>
+
+                }
+
+            </ul>
+        </div>
+        <!-- //discounts -->
+        <!-- reviews -->
+        <div class="customer-rev border-bottom left-side py-2">
+            <h3 class="agileits-sear-head mb-3">Category</h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half"></i>
+                        <span>3.5</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>3.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half"></i>
+                        <span>2.5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- //reviews -->
+
+
+    </div>
+
+    <!-- //product right -->
+</div>
+
+<!-- //top products -->
+
+<script src="~/plugins/common/common.min.js"></script>
+<script src="~/js/custom.min.js"></script>
+<script src="~/js/settings.js"></script>
+<script src="~/js/gleek.js"></script>
+<script src="~/js/styleSwitcher.js"></script>

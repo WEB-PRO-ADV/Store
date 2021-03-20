@@ -28,7 +28,6 @@ namespace Store.Infrastructure.Data
 
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Category> Categories { set; get; }
-        public DbSet<Customer> Customers { set; get; }
         public DbSet<Item> Items { set; get; }
         public DbSet<ItemCart> ItemCarts { set; get; }
         public DbSet<ItemUniqueSpec> ItemUniqueSpecs { set; get; }

@@ -16,8 +16,8 @@ namespace Store.Core.Entities
         [DataType(DataType.Text)]
         [Display(Name = "Status")]
         public string Status { set; get; }
-        public int CustomerId { set; get; }
-        public Customer Customer { set; get; }
+        public int StoreUserId { set; get; }
+        public StoreUser StoreUser { set; get; }
         public ICollection<OrderedItem> OrderedItems { set; get; }
     }
 }
